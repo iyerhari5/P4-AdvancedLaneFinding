@@ -11,14 +11,26 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
-The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  If you want to extract more test images from the videos, you can simply use an image writing method like `cv2.imwrite()`, i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.  
+[//]: # (Image References)
 
-To help the reviewer examine your work, please save examples of the output from each stage of your pipeline in the folder called `ouput_images`, and include a description in your writeup for the project of what each image shows.    The video called `project_video.mp4` is the video your pipeline should work well on.  
+[image1]: ./output_images/calibration_find_corners.png
+[image2]: ./output_images/calibratio_results.png
+[image3]: ./output_images/Training-Distribution-After.png
+[image4]: ./output_images/9-layer-ConvNet-model.png
+[image5]: ./output_images/run1.gif
+[image6]: ./output_images/run2.gif
 
-The `challenge_video.mp4` video is an extra (and optional) challenge for you if you want to test your pipeline under somewhat trickier conditions.  The `harder_challenge.mp4` video is another optional challenge and is brutal!
 
-If you're feeling ambitious (again, totally optional though), don't stop there!  We encourage you to go out and take video of your own, calibrate your camera and show us how you would implement this project from scratch!
+# Camera calibration
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+We use a number of calibration images to estimate the camera parameters. The images are from a known checkerboard pattern with black and white
+alternating squares. There a total of 60 (10x6) squares in each image. We use the OpenCV function findChessboardCorners() to find the corners
+of the checkerboard image. The routine looks for the interior corners in the image. So there are a total of 45(9x5) expected corners. 
+The find_calibration_parameters() routine takes the calibration directory as input and proceses each of the calibration images. If all the expected corners are found successfully, they are added to a list storing image points. For each of the detected points, we know the corresponding  world coordinate and this is also added to a list. Finally we use OpenCV function calibrateCamera() function to compute the camera distortion parameters.
+
+Figure below shows the calibration images with the detected corners in them. For three of the images, the corners were not detected and they are represented as blank images in the figure below.
+![alt text][image1]
+
+Once we have the calibration parameters, we can use the OpenCV function undistort() to remove the distortion from a given image. The figure below shows a sample calibration image before and after distortion correction.
+![alt text][image2]
 
