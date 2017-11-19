@@ -111,7 +111,7 @@ The output from the challenge video is [here](https://github.com/iyerhari5/P4-Ad
 
 ## Potential Improvements
 
-The current pipeline uses a pixel based thresholding to find the lane pixels. We could augment this with some gradient based methods also to find all the pixels of the lanes. The current pixel detection is also not very robust to lighting changes. One potential area of improvement is to develop adaptive thresholding schemes for detecting the lane pixels more robustly even under widely varying brightness conditions.
+The current pipeline uses a pixel based thresholding to find the lane pixels. We could augment this with some gradient based methods also to find all the pixels of the lanes. Another potential area of improvement is to develop adaptive thresholding schemes for detecting the lane pixels more robustly even under widely varying brightness conditions.
 
 I briefly experimented with incorporating multiple frame information in the final lane segmentation. It would make the lanes to be less jumpy but the challenge will also be to keep it adaptive enough to follow sudden changes and sharp curves.
 
