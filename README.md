@@ -20,7 +20,9 @@ The goals of this project are the following:
 [image5]: ./output_images/color_space_sample1.png
 [image6]: ./output_images/color_space_sample2.png
 [image7]: ./output_images/color_space_sample3.png
-
+[image8]: ./output_images/color_threshold_1.png
+[image9]: ./output_images/color_threshold_2.png
+[image10]: ./output_images/color_threshold_3.png
 
 ## Camera calibration and distortion correction
 
@@ -51,3 +53,19 @@ The next step in the pipeline is to identify pixels belonging to the lanes. In o
 ![alt text][image5]
 ![alt text][image6]
 ![alt text][image7]
+
+Another option is to use gradient based detection of the lane pixels. However this method seemed to produce lot of artifacts especially when there are uneven shadows in the image. So I did not pursue this further.
+
+After playing with different color spaces and thresholding parameters, I decided to use the L channels from the HLS color space and the B channel from the LAB color space to get the lane pixels. In order to make the pipeline more robust to partial shadows etc, I use the [CLAHE algorithm] (https://en.wikipedia.org/wiki/Adaptive_histogram_equalization#Contrast_Limited_AHE) to normalize the channel of interest before thresholding. Figure below shows for a sample image the selected channels, the normalized image and the final thresholding for each of those.
+![alt text][image8]
+![alt text][image9]
+
+The final lane pixel mask is found by combining the information from both the above. Figure below shows for a sample image and the final detected lane pixels 
+![alt text][image10]
+
+
+
+## Possible Improvements
+
+* Explore gradient based lane detection to augmnet the color thresholding
+* Explore adaptive thresholding stragegies to better handle brightness variations
