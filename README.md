@@ -1,4 +1,4 @@
-## Advanced Lane Finding
+# Advanced Lane Finding
 
 The goals / steps of this project are the following:
 
@@ -14,14 +14,14 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./output_images/calibration_find_corners.png
-[image2]: ./output_images/calibration_results.png
+[image2]: ./output_images/calibration_result.png
 [image3]: ./output_images/Training-Distribution-After.png
 [image4]: ./output_images/9-layer-ConvNet-model.png
 [image5]: ./output_images/run1.gif
 [image6]: ./output_images/run2.gif
 
 
-# Camera calibration
+## Camera calibration
 
 We use a number of calibration images to estimate the camera parameters. The images are from a known checkerboard pattern with black and white
 alternating squares. There a total of 70 (10x7) squares in each image. We use the OpenCV function findChessboardCorners() to find the corners
