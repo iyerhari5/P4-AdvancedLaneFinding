@@ -60,7 +60,8 @@ After playing with different color spaces and thresholding parameters, I decided
 ![alt text][image8]
 ![alt text][image9]
 
-The final lane pixel mask is found by combining the information from both the above. Figure below shows a sample image and the final detected lane pixels .
+The final lane pixel mask is found by combining the information from both the above. Figure below shows a sample image and the final detected lane pixels 
+
 ![alt text][image10]
 
 
