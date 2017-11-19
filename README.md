@@ -16,7 +16,7 @@ The goals of this project are the following:
 [image1]: ./output_images/calibration_find_corners.png
 [image2]: ./output_images/calibration_result.png
 [image3]: ./output_images/calibration_result_road.png
-[image4]: ./output_images/9-layer-ConvNet-model.png
+[image4]: ./output_images/perspective_projection_result.png
 [image5]: ./output_images/run1.gif
 [image6]: ./output_images/run2.gif
 
@@ -37,7 +37,7 @@ Once we have the calibration parameters, we can use the OpenCV function undistor
 We can now use the distortion parmeters calculated to the road images of interest. The figure below shows a sample road image before and after distortion correction. The effect of the distortion correction can be noticed  mainly if we look at the dashboard near the bottom of the image.
 ![alt text][image3]
 
-
-## Perspective Transform
-
-In order to segment the lanes properly, we want to create a "bird's eye" view of the road images. We can achieve this by creating a perspective transform. 
+In order to segment the lanes properly, we want to create a "bird's eye" view of the road images. We can achieve this by creating a perspective transform.  In order to first compute the transformation, we need to define it. This can be done by selecting points from an image and defining the points that we want to map the selected points to. The main goal of the perspective transform is to visualize the lane lines so that they are parallel (at least when on a straight road), rather than leaning inwards towards the vanishing point. I selected the points from an image with a straight portion of the road and then defined the mapping points that would map the straight lines to vertical lines in the transofrmed image. Once we have the points defined, we can use the OpenCV function getPerspectiveTransform() to get the transformation matrix (and the inverse transformation).
+The function warpPerspective() can be used to transform an image using the computed transformation matrix. Figure below shows a sample image and the 
+transformed bird's eye view of the same image.
+![alt text][image4]
