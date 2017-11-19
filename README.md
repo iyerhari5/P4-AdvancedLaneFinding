@@ -1,6 +1,6 @@
 # Advanced Lane Finding
 
-The goals / steps of this project are the following:
+The goals of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -15,13 +15,13 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/calibration_find_corners.png
 [image2]: ./output_images/calibration_result.png
-[image3]: ./output_images/Training-Distribution-After.png
+[image3]: ./output_images/calibration_result_road.png
 [image4]: ./output_images/9-layer-ConvNet-model.png
 [image5]: ./output_images/run1.gif
 [image6]: ./output_images/run2.gif
 
 
-## Camera calibration
+## Camera calibration and distortion correction
 
 We use a number of calibration images to estimate the camera parameters. The images are from a known checkerboard pattern with black and white
 alternating squares. There a total of 70 (10x7) squares in each image. We use the OpenCV function findChessboardCorners() to find the corners
@@ -34,3 +34,10 @@ Figure below shows the calibration images with the detected corners in them. For
 Once we have the calibration parameters, we can use the OpenCV function undistort() to remove the distortion from a given image. The figure below shows a sample calibration image before and after distortion correction.
 ![alt text][image2]
 
+We can now use the distortion parmeters calculated to the road images of interest. The figure below shows a sample road image before and after distortion correction. The effect of the distortion correction can be noticed  mainly if we look at the dashboard near the bottom of the image.
+![alt text][image3]
+
+
+## Perspective Transform
+
+In order to segment the lanes properly, we want to create a "bird's eye" view of the road images. We can achieve this by creating a perspective transform. 
