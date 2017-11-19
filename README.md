@@ -25,6 +25,8 @@ The goals of this project are the following:
 [image10]: ./output_images/color_threshold_3.png
 [image11]: ./output_images/lane_finding.png
 [image12]: ./output_images/lane_tracking.png
+[image13]: ./output_images/project_video_output_debug.gif
+
 
 ## Camera calibration and distortion correction
 
@@ -90,14 +92,15 @@ curverad =  ((1 + (2*fit_cr[0]*y_eval*ym_per_pix + fit_cr[1])**2)**1.5) / np.abs
 Here fit_cr stores the coefficients of the polynomial fit and y_eval is set to the bottom of the image (as that corresponds to the car position)
 The left and right radius of curvature are computed separately and averaged  to report the final radius of curvature of the road.
 
-The position of the inside the lane is calculated using the following formula:
+The position of the car in the lane is calculated using the following formula:
 ```
 offset = shape[1]/2*xm_per_pix - (left_bot_x+right_bot_x)/2
 ```
 
-Here the first term is car position, which is assumed to be the center of the image along x. The left_bot_x and right_bot_x are the x-interxepts of the line fits evaluated at the bottom of the image (highest y). xm_per_pix is the physical dimension of each pixel in meters.
+Here the first term is the car position which is assumed to be the center of the image along x. The left_bot_x and right_bot_x are the x-interxepts of the line fits evaluated at the bottom of the image (highest y). xm_per_pix is the physical dimension of each pixel in meters.
 
 
+## Results 
 
 
 
