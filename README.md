@@ -17,7 +17,7 @@ The goals of this project are the following:
 [image2]: ./output_images/calibration_result.png
 [image3]: ./output_images/calibration_result_road.png
 [image4]: ./output_images/perspective_projection_result.png
-[image5]: ./output_images/run1.gif
+[image5]: ./output_images/color_space_sample.gif
 [image6]: ./output_images/run2.gif
 
 
@@ -39,7 +39,13 @@ We can now use the distortion parmeters calculated to the road images of interes
 
 ## Bird's eye view
 
-In order to segment the lanes properly, we want to create a "bird's eye" view of the road images. We can achieve this by creating a perspective transform.  In order to first compute the transformation, we need to define it. This can be done by selecting points from an image and defining the points that we want to map the selected points to. The main goal of the perspective transform is to visualize the lane lines so that they are parallel (at least when on a straight road), rather than leaning inwards towards the vanishing point. I selected the points from an image with a straight portion of the road and then defined the mapping points that would map the straight lines to vertical lines in the transofrmed image. Once we have the points defined, we can use the OpenCV function getPerspectiveTransform() to get the transformation matrix (and the inverse transformation).
+In order to segment the lanes properly, we want to create a "bird's eye" view of the road images. We can achieve this by creating a perspective transform.  We need to first find the transformation matrix for this. This can be done by selecting points from an image and defining the points that we want to map the selected points to. The main goal of the perspective transform is to visualize the lane lines so that they are parallel (at least when on a straight road), rather than leaning inwards towards the vanishing point. I selected the points from an image with a straight portion of the road and then defined the mapping points that would map the straight lines to vertical lines in the transofrmed image. Once we have the points defined, we can use the OpenCV function getPerspectiveTransform() to get the transformation matrix (and the inverse transformation).
 The function warpPerspective() can be used to transform an image using the computed transformation matrix. Figure below shows a sample image and the 
 transformed bird's eye view of the same image.
 ![alt text][image4]
+
+## Detection of lane pixels
+
+The next step in the pipeline is to identify pixels belonging to the lanes. In order to see what might be a good way to segment the lane pixels, we first explore a few color spaces to see what might help to identify the lane pixels. Figure below shows a few sample color spaces explored and the individual channels from those color spaces. Here we look at the HSV, LAB and HLS color spaces.
+![alt text][image5]
+
