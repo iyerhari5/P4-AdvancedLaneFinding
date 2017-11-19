@@ -24,8 +24,8 @@ The goals / steps of this project are the following:
 # Camera calibration
 
 We use a number of calibration images to estimate the camera parameters. The images are from a known checkerboard pattern with black and white
-alternating squares. There a total of 60 (10x6) squares in each image. We use the OpenCV function findChessboardCorners() to find the corners
-of the checkerboard image. The routine looks for the interior corners in the image. So there are a total of 45(9x5) expected corners. 
+alternating squares. There a total of 70 (10x7) squares in each image. We use the OpenCV function findChessboardCorners() to find the corners
+of the checkerboard image. The routine looks for the interior corners in the image. So there are a total of 54(9x6) expected corners. 
 The find_calibration_parameters() routine takes the calibration directory as input and proceses each of the calibration images. If all the expected corners are found successfully, they are added to a list storing image points. For each of the detected points, we know the corresponding  world coordinate and this is also added to a list. Finally we use OpenCV function calibrateCamera() function to compute the camera distortion parameters.
 
 Figure below shows the calibration images with the detected corners in them. For three of the images, the corners were not detected and they are represented as blank images in the figure below.
