@@ -17,8 +17,9 @@ The goals of this project are the following:
 [image2]: ./output_images/calibration_result.png
 [image3]: ./output_images/calibration_result_road.png
 [image4]: ./output_images/perspective_projection_result.png
-[image5]: ./output_images/color_space_sample.png
-[image6]: ./output_images/run2.gif
+[image5]: ./output_images/color_space_sample1.png
+[image6]: ./output_images/color_space_sample2.png
+[image7]: ./output_images/color_space_sample3.png
 
 
 ## Camera calibration and distortion correction
@@ -48,4 +49,5 @@ transformed bird's eye view of the same image.
 
 The next step in the pipeline is to identify pixels belonging to the lanes. In order to see what might be a good way to segment the lane pixels, we first explore a few color spaces to see what might help to identify the lane pixels. Figure below shows a few sample color spaces explored and the individual channels from those color spaces. Here we look at the HSV, LAB and HLS color spaces.
 ![alt text][image5]
-
+![alt text][image6]
+![alt text][image7]
