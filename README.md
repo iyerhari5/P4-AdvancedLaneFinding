@@ -106,7 +106,7 @@ Here are the results on the project video. The top panel shows the bird's eye vi
 
 ![alt text][image13]
 
-The output from the challenge video is [here](https://github.com/iyerhari5/P4-AdvancedLaneFinding/output_images/challenge_video_output_debug.gif)
+The output from the challenge video is [here](https://github.com/iyerhari5/P4-AdvancedLaneFinding/tree/master/output_images/challenge_video_output_debug.gif)
 
 
 ## Possible Improvements
