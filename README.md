@@ -76,6 +76,32 @@ The pixels highlighted in red (for the left lane) and in blue (for the right lan
 Once we have an estimate of the lanes, we can do a much more targeted search for the lane pixels. This is done by searching in the vicinity of the polymonial fit from the previous frame. This procedure is illustrated in the figure below. The green region around the pixels shows the search region and the selected pixels for the curve fit for the current frame are displayed in red and blue as before. The road image used here is the next consecutive frame from the road image used in the previous figure. You can see how this procedure may help to track the lanes efficiently even through turns and ligting changes.
 ![alt text][image12]
 
+## Making the pipeline robust
+
+The above steps help to identify the lane pixels and to fit a polynomial. There are many cases, when we are not able to find a reliable fit or the fit is affected by spurious lane pixel detections. I introduced some robustness into the system by putting in a few checks before using the fit from the current frame.  The bottom and top ends of the line fit for each of the left and right lanes are first stored. If the current fit produces line endings that are too far from the previous frame, then the new fit is not used. This is done separately for the left and right lanes. This helps to track the lanes better. The tolerance for movement of the line endings depend on the expected movement and was set empirically based on a few trial runs to 50 pixels.   
+
+## Radius of curvature and position determination
+
+The radius of curvature is calculated using the following formula:
+'''
+curverad =  ((1 + (2*fit_cr[0]*y_eval*ym_per_pix + fit_cr[1])**2)**1.5) / np.absolute(2*fit_cr[0])
+'''
+
+Here fit_cr stores the coefficients of the polynomial fit and y_eval is set to the bottom of the image (as that corresponds to the car position)
+The left and right radius of curvature are computed separately and averaged  to report the final radius of curvature of the road.
+
+The position of the inside the lane is calculated using the following formula:
+'''
+offset = shape[1]/2*xm_per_pix - (left_bot_x+right_bot_x)/2
+'''
+
+Here the first term is car position, which is assumed to be the center of the image along x. The left_bot_x and right_bot_x are the x-interxepts of the line fits evaluated at the bottom of the image (highest y). xm_per_pix is the physical dimension of each pixel in meters.
+
+
+
+
+
+
 ## Possible Improvements
 
 * Explore gradient based lane detection to augmnet the color thresholding
