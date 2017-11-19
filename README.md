@@ -17,7 +17,7 @@ The goals of this project are the following:
 [image2]: ./output_images/calibration_result.png
 [image3]: ./output_images/calibration_result_road.png
 [image4]: ./output_images/perspective_projection_result.png
-[image5]: ./output_images/color_space_sample.gif
+[image5]: ./output_images/color_space_sample.png
 [image6]: ./output_images/run2.gif
 
 
